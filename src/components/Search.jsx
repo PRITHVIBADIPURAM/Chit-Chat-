@@ -88,7 +88,7 @@ const Search = () => {
           value={username}
         />
        <button onClick={handleSearch}
-        style={{ marginLeft: '70px' , color:blue }}>Search</button>
+        style={{ marginLeft: '70px'}}>Search</button>
       </div>
       {err && <span>User not found!</span>}
       {user && (
