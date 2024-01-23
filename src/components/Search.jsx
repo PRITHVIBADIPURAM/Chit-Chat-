@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
+import { blue } from "@mui/material/colors";
 const Search = () => {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
@@ -86,6 +87,8 @@ const Search = () => {
           onChange={(e) => setUsername(e.target.value)}
           value={username}
         />
+       <button onClick={handleSearch}
+        style={{ marginLeft: '70px' , color:blue }}>Search</button>
       </div>
       {err && <span>User not found!</span>}
       {user && (
