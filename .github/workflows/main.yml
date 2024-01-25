@@ -10,20 +10,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      # Update Browserslist
+      - name: Update Browserslist
+        run: npx browserslist@latest --update-db
+
+      # Use Node.js 20.x
       - name: Use Node.js 20.x
         uses: actions/setup-node@v2
         with:
           node-version: 20.x
           cache: 'npm'
           cache-dependency-path: package-lock.json
+
+      # Install dependencies
       - name: Install dependencies
-        run: npm install --force
-      # - name: Run tests
-      #   run: npm test
+        run: npm install
+
+      # Update caniuse-lite
+      - name: Update caniuse-lite
+        run: npm update caniuse-lite
+
+      # Build file
       - name: Build file
         run: npm run build
 
-      # deploy the application to netlify
+      # Deploy production to Netlify
       - name: Deploy production to Netlify
         uses: South-Paw/action-netlify-deploy@v1.2.0
         with:
